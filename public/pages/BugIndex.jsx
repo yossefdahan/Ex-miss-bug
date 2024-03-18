@@ -34,6 +34,7 @@ export function BugIndex() {
         const bug = {
             title: prompt('Bug title?'),
             severity: +prompt('Bug severity?'),
+            description: prompt('Add description of the bug')
         }
         bugService
             .save(bug)
