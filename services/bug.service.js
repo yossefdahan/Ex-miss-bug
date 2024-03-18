@@ -31,11 +31,11 @@ function save(bug) {
         const bugIdx = bugs.findIndex(_bug => _bug._id === bug._id)
         bugs[bugIdx] = bug
     } else {
-        bug.title = utilService.makeLorem(2)
+        // bug.title = utilService.makeLorem(2)
         bug._id = utilService.makeId()
-        bug.description = utilService.makeLorem()
+        // bug.description = ''
         bug.createdAt = Date.now()
-        bug.severity = utilService.getRandomIntInclusive(1, 5)
+        // bug.severity = utilService.getRandomIntInclusive(1, 5)
         bugs.unshift(bug)
     }
     return _saveBugsToFile().then(() => bug)

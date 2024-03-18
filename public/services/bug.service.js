@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'bugDB'
-
+const BASE_URL = '/api/bug/'
 _createBugs()
 
 export const bugService = {
@@ -11,30 +11,67 @@ export const bugService = {
     getById,
     save,
     remove,
+    getFilterFromParams,
+    getDefaultFilter
 }
 
 
-function query() {
-    return storageService.query(STORAGE_KEY)
+function query(filterBy = getDefaultFilter()) {
+    return axios.get(BASE_URL)
+        .then(res => res.data)
+        .then(bugs => {
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                bugs = bugs.filter(bug => regex.test(bug.title) || regex.test(bug.severity))
+            }
+            return bugs
+        })
+
+    // return storageService.query(STORAGE_KEY)
 }
 function getById(bugId) {
-    return storageService.get(STORAGE_KEY, bugId)
+    return axios.get(BASE_URL + bugId)
+        .then(res => res.data)
+        .catch(err => {
+            console.log('err', err)
+        })
+
+    // return storageService.get(STORAGE_KEY, bugId)
 }
 
 function remove(bugId) {
-    return storageService.remove(STORAGE_KEY, bugId)
+    return axios.get(BASE_URL + bugId + '/remove').then(res => res.data)
+    // return storageService.remove(STORAGE_KEY, bugId)
 }
 
 function save(bug) {
-    if (bug._id) {
-        return storageService.put(STORAGE_KEY, bug)
-    } else {
-        return storageService.post(STORAGE_KEY, bug)
+    console.log(bug);
+    const url = BASE_URL + 'save'
+    let queryParams = `?title=${bug.title}&severity=${bug.severity}&description=${bug.description}`
+
+    if (bug.id) {
+        queryParams += `&_id=${bug._id}`
     }
+    return axios.get(url + queryParams).then(res => res.data)
+
+    // if (bug._id) {
+    //     return storageService.put(STORAGE_KEY, bug)
+    // } else {
+    //     return storageService.post(STORAGE_KEY, bug)
+    // }
 }
 
+function getDefaultFilter() {
+    return { title: '', severity: '' }
+}
 
-
+function getFilterFromParams() {
+    const defaultFilter = getDefaultFilter()
+    return {
+        title: searchParams.get('title') || defaultFilter.title,
+        severity: searchParams.get('severity') || defaultFilter.severity
+    }
+}
 
 function _createBugs() {
     let bugs = utilService.loadFromStorage(STORAGE_KEY)
