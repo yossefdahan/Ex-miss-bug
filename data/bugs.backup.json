@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Infinite Loop Detected",
+        "severity": 4,
+        "description": "problem when clicking Save",
+        "_id": "1NF1N1T3",
+        "createdAt": 1542107359454
+    },
+    {
+        "title": "Keyboard Not Found",
+        "severity": 3,
+        "description": "problem when clicking Save",
+        "_id": "K3YB0RD",
+        "createdAt": 1542107359454
+    },
+    {
+        "title": "404 Coffee Not Found",
+        "severity": 2,
+        "description": "problem when clicking Save",
+        "_id": "C0FF33",
+        "createdAt": 1542107359454
+    },
+    {
+        "title": "Unexpected Response",
+        "severity": 1,
+        "description": "problem when clicking Save",
+        "_id": "G0053",
+        "createdAt": 1542107359454
+    }
+]
