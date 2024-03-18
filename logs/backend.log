@@ -1,0 +1,57 @@
+18.3.2024, 16:31:33 - ERROR - Cannot save bug | ReferenceError: fstat is not defined
+18.3.2024, 16:32:11 - ERROR - Cannot save bug | ReferenceError: fstat is not defined
+18.3.2024, 16:33:27 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:34:13 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:35:36 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:36:33 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:38:26 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:42:13 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:47:20 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:47:28 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:47:56 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:53:29 - DEBUG - {}
+18.3.2024, 16:53:29 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:53:29 - DEBUG - {}
+18.3.2024, 16:53:29 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:57:02 - DEBUG - {}
+18.3.2024, 16:57:02 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:58:32 - DEBUG - {}
+18.3.2024, 16:58:32 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:59:40 - DEBUG - {}
+18.3.2024, 16:59:40 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 16:59:41 - DEBUG - {}
+18.3.2024, 16:59:41 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 17:02:36 - DEBUG - {}
+18.3.2024, 17:02:36 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 17:02:51 - DEBUG - {}
+18.3.2024, 17:02:51 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 17:04:14 - DEBUG - {}
+18.3.2024, 17:04:14 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+18.3.2024, 17:07:39 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+18.3.2024, 17:09:04 - ERROR - Cannot remove bug
+18.3.2024, 17:09:39 - ERROR - Cannot remove bug
+18.3.2024, 17:10:45 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 17:13:39 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 17:18:20 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:18:28 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:18:59 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:19:05 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:19:07 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:19:19 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:19:35 - ERROR - Cannot save bug | TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+18.3.2024, 17:20:21 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:21:18 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:21:27 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:21:56 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:21:59 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:22:00 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:22:08 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:22:11 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:22:12 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:22:55 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:23:39 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:23:44 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:27:04 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:28:00 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:28:02 - INFO - Server listening on port http://127.0.0.1:${port}/
+18.3.2024, 17:28:58 - INFO - Server listening on port http://127.0.0.1:${port}/
