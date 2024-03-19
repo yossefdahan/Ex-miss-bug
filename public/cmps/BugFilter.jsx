@@ -20,6 +20,8 @@ export function BugFilter({ onSetFilter, filterBy }) {
         setFilterByToEdit((prevFilterBy) => ({ ...prevFilterBy, [field]: value }))
     }
 
+    
+
     return <section>
         <h2>Filter our cars</h2>
 

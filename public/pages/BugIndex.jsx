@@ -12,23 +12,28 @@ export function BugIndex() {
     const [bugs, setBugs] = useState(null)
     const [filterBy, setFilterBy] = useState(bugService.getFilterFromParams(searchParams))
     const debounceOnSetFilter = useRef(utilService.debounce(onSetFilter, 500))
-    useEffect(() => {
-        setSearchParams(filterBy)
-        loadBugs()
-    }, [filterBy])
+    const [sortBy, setSortBy] = useState(bugService.getSortBy())
 
+    useEffect(() => {
+
+        setSearchParams({ filterBy, sortBy })
+
+        loadBugs()
+    }, [filterBy, sortBy])
 
     function onSetFilter(fieldsToUpdate) {
         setFilterBy(prevFilter => {
-            if (prevFilter.pageIdx !== undefined) prevFilter.pageIdx = 0
-            console.log(fieldsToUpdate);
-            return { ...prevFilter, fieldsToUpdate }
+            if (prevFilter.pageIdx !== undefined) fieldsToUpdate.pageIdx = 0
+            return { ...fieldsToUpdate }
         })
     }
 
     function loadBugs() {
-        bugService.query(filterBy)
-            .then((bugs) => { setBugs(bugs) })
+        bugService.query({ filterBy, sortBy })
+            .then((bugs) => {
+
+                setBugs(bugs)
+            })
     }
 
     function onChangePage(diff) {
@@ -37,12 +42,6 @@ export function BugIndex() {
         if (nextPageIdx < 0) nextPageIdx = 0
         setFilterBy(prevFilter => ({ ...prevFilter, pageIdx: nextPageIdx }))
     }
-
-    // function onTogglePagination() {
-    //     setFilterBy(prevFilter => ({
-    //         ...prevFilter, pageIdx: filterBy.pageIdx === undefined ? 0 : undefined
-    //     }))
-    // }
 
     function onRemoveBug(bugId) {
         bugService.remove(bugId)
@@ -92,6 +91,16 @@ export function BugIndex() {
                 showErrorMsg('Cannot update bug')
             })
     }
+
+    function onSortBy() {
+
+        if (sortBy.sortBy === 1) {
+            setSortBy(prevSort => ({ ...prevSort, sortBy: -1 }))
+        } else {
+            setSortBy(prevSort => ({ ...prevSort, sortBy: 1 }))
+        }
+    }
+
     const { title, minSeverity } = filterBy
     return (
         <main>
@@ -101,19 +110,18 @@ export function BugIndex() {
                     <button onClick={() => onChangePage(-1)}>-</button>
                     <span>{filterBy.pageIdx + 1}</span>
                     <button onClick={() => onChangePage(1)}>+</button>
-                    {/* <button onClick={() => onTogglePagination()}>Toggle Pagination</button> */}
                 </section>
                 <button onClick={onAddBug}>Add Bug ⛐</button>
                 <BugFilter
                     onSetFilter={debounceOnSetFilter.current}
                     filterBy={{ title, minSeverity }}
                 />
+                <input type="checkbox"
+                    onClick={() => onSortBy()}
+                />
                 <BugList bugs={bugs}
                     onRemoveBug={onRemoveBug}
                     onEditBug={onEditBug} />
-
-
-
             </main>
         </main>
     )

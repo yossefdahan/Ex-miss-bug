@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 import { utilService } from "./utils.service.js"
-const PAGE_SIZE = 3
+const PAGE_SIZE = 5
 
 export const bugService = {
     query,
@@ -12,8 +12,9 @@ export const bugService = {
 
 const bugs = utilService.readJsonFile('./data/bugs.json')
 
-function query(filterBy) {
+function query(filterBy, sortBy) {
     let bugsToReturn = bugs
+
     if (filterBy.title) {
         const regex = new RegExp(filterBy.title, 'i')
         bugsToReturn = bugsToReturn.filter(bug => regex.test(bug.title))
@@ -21,12 +22,17 @@ function query(filterBy) {
     if (filterBy.minSeverity) {
         bugsToReturn = bugsToReturn.filter(bug => bug.severity >= filterBy.minSeverity)
     }
+    if (sortBy === 1) {
+        bugsToReturn = bugsToReturn.sort((a, b) => sortBy * (a.severity - b.severity))
+    } else {
+        bugsToReturn = bugsToReturn.sort((a, b) => sortBy * (a.severity - b.severity))
+    }
     if (filterBy.pageIdx !== undefined) {
         const pageIdx = +filterBy.pageIdx
         const startIdx = pageIdx * PAGE_SIZE
         bugsToReturn = bugsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
     }
-
+    
     return Promise.resolve(bugsToReturn)
 }
 

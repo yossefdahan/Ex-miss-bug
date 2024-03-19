@@ -12,13 +12,15 @@ export const bugService = {
     save,
     remove,
     getFilterFromParams,
-    getDefaultFilter
+    getDefaultFilter,
+    getSortBy
 }
 
 
-function query(filterBy = getDefaultFilter()) {
+function query({ filterBy = getDefaultFilter(), sortBy }) {
+    const params = { ...filterBy, ...sortBy }
 
-    return axios.get(BASE_URL, { params: filterBy })
+    return axios.get(BASE_URL, { params })
         .then(res => res.data)
 
 
@@ -65,6 +67,10 @@ function getFilterFromParams(searchParams = {}) {
         minSeverity: searchParams.get('minSeverity') || defaultFilter.minSeverity,
         pageIdx: defaultFilter.pageIdx
     }
+}
+
+function getSortBy() {
+    return { sortBy: 1 }
 }
 
 function _createBugs() {
