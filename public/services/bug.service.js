@@ -17,18 +17,14 @@ export const bugService = {
 
 
 function query(filterBy = getDefaultFilter()) {
-    return axios.get(BASE_URL)
+
+    return axios.get(BASE_URL, { params: filterBy })
         .then(res => res.data)
-        .then(bugs => {
-            if (filterBy.txt) {
-                const regex = new RegExp(filterBy.txt, 'i')
-                bugs = bugs.filter(bug => regex.test(bug.title) || regex.test(bug.severity))
-            }
-            return bugs
-        })
+
 
     // return storageService.query(STORAGE_KEY)
 }
+
 function getById(bugId) {
     return axios.get(BASE_URL + bugId)
         .then(res => res.data)
@@ -40,19 +36,16 @@ function getById(bugId) {
 }
 
 function remove(bugId) {
-    return axios.get(BASE_URL + bugId + '/remove').then(res => res.data)
+    return axios.delete(BASE_URL + bugId).then(res => res.data)
     // return storageService.remove(STORAGE_KEY, bugId)
 }
 
 function save(bug) {
-    console.log(bug);
-    const url = BASE_URL + 'save'
-    let queryParams = `?title=${bug.title}&severity=${bug.severity}&description=${bug.description}`
-
-    if (bug.id) {
-        queryParams += `&_id=${bug._id}`
+    if (bug._id) {
+        return axios.put(BASE_URL, bug).then(res => res.data)
+    } else {
+        return axios.post(BASE_URL, bug).then(res => res.data)
     }
-    return axios.get(url + queryParams).then(res => res.data)
 
     // if (bug._id) {
     //     return storageService.put(STORAGE_KEY, bug)
@@ -62,14 +55,15 @@ function save(bug) {
 }
 
 function getDefaultFilter() {
-    return { title: '', severity: '' }
+    return { title: '', minSeverity: '', pageIdx: 0 }
 }
 
-function getFilterFromParams() {
+function getFilterFromParams(searchParams = {}) {
     const defaultFilter = getDefaultFilter()
     return {
         title: searchParams.get('title') || defaultFilter.title,
-        severity: searchParams.get('severity') || defaultFilter.severity
+        minSeverity: searchParams.get('minSeverity') || defaultFilter.minSeverity,
+        pageIdx: defaultFilter.pageIdx
     }
 }
 

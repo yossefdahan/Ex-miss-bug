@@ -1,6 +1,8 @@
 import fs from 'fs'
 
-import { utilService } from "./utils.service.js";
+import { utilService } from "./utils.service.js"
+const PAGE_SIZE = 3
+
 export const bugService = {
     query,
     getById,
@@ -10,8 +12,22 @@ export const bugService = {
 
 const bugs = utilService.readJsonFile('./data/bugs.json')
 
-function query() {
-    return Promise.resolve(bugs)
+function query(filterBy) {
+    let bugsToReturn = bugs
+    if (filterBy.title) {
+        const regex = new RegExp(filterBy.title, 'i')
+        bugsToReturn = bugsToReturn.filter(bug => regex.test(bug.title))
+    }
+    if (filterBy.minSeverity) {
+        bugsToReturn = bugsToReturn.filter(bug => bug.severity >= filterBy.minSeverity)
+    }
+    if (filterBy.pageIdx !== undefined) {
+        const pageIdx = +filterBy.pageIdx
+        const startIdx = pageIdx * PAGE_SIZE
+        bugsToReturn = bugsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
+    }
+
+    return Promise.resolve(bugsToReturn)
 }
 
 function getById(id) {
@@ -32,6 +48,7 @@ function save(bug) {
         bugs[bugIdx] = bug
     } else {
         // bug.title = utilService.makeLorem(2)
+
         bug._id = utilService.makeId()
         // bug.description = ''
         bug.createdAt = Date.now()
